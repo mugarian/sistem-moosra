@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\C_Home;
+use App\Http\Controllers\C_Kriteria;
+use App\Http\Controllers\C_Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [C_Login::class, 'index'])->name('login')->middleware('guest');
+Route::get('/home', [C_Home::class, 'index'])->name('home');
+Route::get('/kriteria', [C_Kriteria::class, 'lihatKriteria'])->name('kriteria');
+Route::get('/kriteria/ubah/{id}', [C_Kriteria::class, 'ubahKriteria'])->name('ubah_kriteria');
+
+

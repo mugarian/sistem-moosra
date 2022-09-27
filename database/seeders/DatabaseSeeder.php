@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\M_Kriteria;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +17,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::create([
+            'nama_admin' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        M_Kriteria::create([
+            'nama_kriteria' => 'Nilai IPK',
+            'bobot' => 25,
+            'jenis_kriteria' => 'Benefit'
+        ]);
+
+        M_Kriteria::create([
+            'nama_kriteria' => 'Etika',
+            'bobot' => 20,
+            'jenis_kriteria' => 'Benefit'
+        ]);
+
+        M_Kriteria::create([
+            'nama_kriteria' => 'Prestasi Non Akademik',
+            'bobot' => 20,
+            'jenis_kriteria' => 'Benefit'
+        ]);
+
+        M_Kriteria::create([
+            'nama_kriteria' => 'Jumlah Sertifikat Keahlian',
+            'bobot' => 10,
+            'jenis_kriteria' => 'Benefit'
+        ]);
+
+        M_Kriteria::create([
+            'nama_kriteria' => 'Aktif Organisasi',
+            'bobot' => 25,
+            'jenis_kriteria' => 'Benefit'
+        ]);
     }
 }
