@@ -8,7 +8,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Kriteria</h6>
+
+            <h6 class="m-0 font-weight-bold text-primary">Data Alternatif</h6>
+            <a href="/alternatif/tambah" class="btn btn-primary btn-sm">Tambah</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -16,30 +18,24 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kriteria</th>
-                            <th>Bobot</th>
-                            <th>Jenis</th>
+                            <th>Nama Mahasiswa</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Kriteria</th>
-                            <th>Bobot</th>
-                            <th>Jenis</th>
+                            <th>Nama Mahasisaw</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($kriteria as $kr)
+                        @foreach ($alternatif as $al)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kr->nama_kriteria}}</td>
-                                <td>{{ $kr->bobot}}%</td>
-                                <td>{{ $kr->jenis_kriteria }}</td>
+                                <td>{{ $al->nama_mahasiswa}}</td>
                                 <td>
-                                    <a href="/kriteria/ubah/{{$kr->id}}" class="btn btn-warning btn-sm">
+                                    <a href="/alternatif/ubah/{{$al->id}}" class="btn btn-warning btn-sm">
                                         <i class="fa-solid fa-pencil"></i> Ubah
                                     </a>
                                 </td>

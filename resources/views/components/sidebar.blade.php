@@ -32,7 +32,7 @@
             <i class="fa-solid fa-key"></i>
             <span>Kriteria</span></a>
         </li>
-    <li class="nav-item{{ Request::is('subkriteria*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('subkriteria') ? 'active' : '' }}">
         <a class="nav-link" href="/subkriteria">
             <i class="fa-solid fa-tag"></i>
             <span>Sub Kriteria</span></a>
