@@ -11,7 +11,7 @@ class M_Kriteria extends Model
 
     protected $guarded = ['id'];
 
-    public function subKriteria() {
+    public function sub_kriteria() {
         return $this->hasMany(M_SubKriteria::class);
     }
 }

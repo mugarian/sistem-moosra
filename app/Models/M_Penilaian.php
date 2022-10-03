@@ -14,4 +14,8 @@ class M_Penilaian extends Model
     public function alternatif() {
         return $this->belongsTo(M_Alternatif::class);
     }
+
+    public function sub_kriteria() {
+        return $this->belongsTo(M_SubKriteria::class);
+    }
 }

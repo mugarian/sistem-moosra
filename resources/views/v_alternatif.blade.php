@@ -7,8 +7,7 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-
+        <div class="card-header d-flex align-items-center justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Data Alternatif</h6>
             <a href="/alternatif/tambah" class="btn btn-primary btn-sm">Tambah</a>
         </div>
@@ -35,9 +34,17 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $al->nama_mahasiswa}}</td>
                                 <td>
-                                    <a href="/alternatif/ubah/{{$al->id}}" class="btn btn-warning btn-sm">
-                                        <i class="fa-solid fa-pencil"></i> Ubah
-                                    </a>
+                                    <span class="d-flex align-items-center justify-content-start">
+                                       <a href="/alternatif/ubah/{{$al->id}}" class="btn btn-warning btn-sm mx-1">
+                                           <i class="fa-solid fa-pencil"></i>
+                                       </a>
+                                       <form action="/alternatif/{{ $al->id }}/delete" method="POST" class="mx-1">
+                                          @csrf
+                                          <button type="submit" class="btn btn-danger btn-sm">
+                                             <i class="fa-solid fa-trash"></i>
+                                          </button>
+                                      </form>
+                                    </span>
                                 </td>
                             </tr>
                         @endforeach

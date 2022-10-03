@@ -42,7 +42,7 @@ class C_Alternatif extends Controller
 
     public function ubah(Request $request, $id) {
         $rules = [
-            'nama_kriteria' => 'required|max:255',
+            'nama_mahasiswa' => 'required|max:255',
         ];
 
         $validatedData = $request->validate($rules);

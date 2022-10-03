@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\M_Alternatif;
 use App\Models\M_Kriteria;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,10 @@ class DatabaseSeeder extends Seeder
             'nama_admin' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
+        ]);
+
+        M_Alternatif::create([
+            'nama_mahasiswa' => 'Tedi',
         ]);
 
         M_Kriteria::create([

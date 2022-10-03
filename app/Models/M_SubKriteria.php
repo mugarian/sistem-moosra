@@ -14,4 +14,8 @@ class M_SubKriteria extends Model
     public function kriteria() {
         return $this->belongsTo(M_Kriteria::class);
     }
+
+    public function penilaian() {
+        return $this->hasMany(M_Penilaian::class);
+    }
 }

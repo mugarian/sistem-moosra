@@ -5,6 +5,8 @@ use App\Http\Controllers\C_Login;
 use App\Http\Controllers\C_Kriteria;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\C_Alternatif;
+use App\Http\Controllers\C_SubKriteria;
+use App\Http\Controllers\C_Penilaian;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,18 @@ Route::get('/alternatif/tambah/', [C_Alternatif::class, 'tambahAlternatif'])->na
 Route::post('/alternatif', [C_Alternatif::class, 'tambah']);
 Route::get('/alternatif/ubah/{id}', [C_Alternatif::class, 'ubahAlternatif'])->name('ubah_Alternatif');
 Route::post('/alternatif/{id}/edit', [C_Alternatif::class, 'ubah']);
-Route::post('/alternatif/{id}/hapus', [C_Alternatif::class, 'hapus']);
+Route::post('/alternatif/{id}/delete', [C_Alternatif::class, 'hapus']);
 
+Route::get('/subkriteria', [C_SubKriteria::class, 'lihatSub'])->name('sub');
+Route::get('/subkriteria/tambah/{id}', [C_SubKriteria::class, 'tambahSub'])->name('tambah_sub');
+Route::post('/subkriteria', [C_SubKriteria::class, 'tambah']);
+Route::get('/subkriteria/ubah/{id}', [C_SubKriteria::class, 'ubahSub'])->name('ubah_sub');
+Route::post('/subkriteria/{id}/edit', [C_SubKriteria::class, 'ubah']);
+Route::post('/subkriteria/{id}/delete', [C_SubKriteria::class, 'hapus']);
 
+Route::get('/penilaian', [C_Penilaian::class, 'lihatPenilaian'])->name('penilaian');
+Route::get('/penilaian/tambah/{id}', [C_Penilaian::class, 'tambahPenilaian'])->name('tambah_penilaian');
+Route::post('/penilaian', [C_Penilaian::class, 'tambah']);
+Route::get('/penilaian/ubah/{id}', [C_Penilaian::class, 'ubahPenilaian'])->name('ubah_penilaian');
+Route::post('/penilaian/{id}/edit', [C_Penilaian::class, 'ubah']);
+Route::post('/penilaian/{id}/delete', [C_Penilaian::class, 'hapus']);

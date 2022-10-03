@@ -24,7 +24,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="bobot">Bobot (%)</label>
                     <div class="col-sm-10">
-                      <input type="" class="form-control @error('bobot')
+                      <input type="number" class="form-control @error('bobot')
                           is-invalid
                       @enderror" id="bobot" name="bobot" placeholder="10107999" required value="{{ old('bobot', $kriteria->bobot) }}" />
                         @error('bobot')
