@@ -13,9 +13,9 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="{{ $kr->nama_kriteria }}">{{ $kr->nama_kriteria }}</label>
                             <div class="col-sm-10">
-                            <select id="{{ $kr->nama_kriteria }}" class="form-select @error('{{ $kr->id }}')
+                            <select id="{{ $kr->nama_kriteria }}" class="form-select @error('sub_kriteria{{ $loop->iteration }}_id')
                                 is-invalid
-                            @enderror" name="{{ $kr->id }}">
+                            @enderror" name="sub_kriteria{{ $loop->iteration }}_id">
                                 <option value="" hidden>Select {{ $kr->nama_kriteria }}</option>
                                 @foreach ($subkriteria as $sub)
                                     @if ($sub->kriteria_id == $kr->id)

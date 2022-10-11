@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -30,50 +30,81 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($alternatif as $al)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $al->nama_mahasiswa}}</td>
-                                <td>
-                                    <table>
-                                        @foreach ($kriteria as $kr)
-                                        <tr>
-                                            <td>{{$kr->nama_kriteria}}</td>
-                                            <td>:</td>
-                                            @foreach ($subkriteria as $sub)
-                                                @if ($sub->kriteria_id == $kr->id)
-                                                    <td>{{$sub->nama_sub}}</td>
-                                                    <?php break; ?>
-                                                @endif
-                                            @endforeach
-                                        </tr>
+                       @foreach ($alternatif as $al)
+                           <tr>
+                              <td>{{$loop->iteration}}</td>
+                              <td>{{$al->nama_mahasiswa}}</td>
+                                {{-- AKSI --}}
+                              <td>
+                                <table>
+                                    <tr>
+                                        <td>{{$kriteria[0]->nama_kriteria}}</td>
+                                        <td>:</td>
+                                        @foreach ($penilaian as $pen)
+                                            @if ($pen->alternatif_id == $al->id)
+                                                <td>{{$pen->sub_kriteria1->nama_sub}}</td>
+                                            @endif
                                         @endforeach
-                                    </table>
-                                </td>
-                                <td>
-                                    <span class="d-flex align-items-center justify-content-start">
-                                        @if ($penilaian->count())
-                                            @foreach ($penilaian as $nilai)
-                                                @if ($nilai->alternatif_id == $al->id)
-                                                    <a href="/penilaian/ubah/{{$al->id}}" class="btn btn-warning btn-sm mx-1">
-                                                        <i class="fa-solid fa-pencil"></i> Ubah
-                                                    </a>
-                                                    <?php break; ?>
-                                                @else
-                                                    <a href="/penilaian/tambah/{{$al->id}}" class="btn btn-success btn-sm mx-1">
-                                                        <i class="fa-solid fa-plus"></i> Nilai
-                                                    </a>
-                                                    <?php break; ?>
-                                                @endif
-                                            @endforeach
-                                        @else
-                                            <a href="/penilaian/tambah/{{$al->id}}" class="btn btn-success btn-sm mx-1">
-                                                <i class="fa-solid fa-plus"></i> Nilai
-                                            </a>
-                                        @endif
-                                    </span>
-                                </td>
-                            </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>{{$kriteria[1]->nama_kriteria}}</td>
+                                        <td>:</td>
+                                        @foreach ($penilaian as $pen)
+                                            @if ($pen->alternatif_id == $al->id)
+                                                <td>{{$pen->sub_kriteria2->nama_sub}}</td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <td>{{$kriteria[2]->nama_kriteria}}</td>
+                                        <td>:</td>
+                                        @foreach ($penilaian as $pen)
+                                            @if ($pen->alternatif_id == $al->id)
+                                                <td>{{$pen->sub_kriteria3->nama_sub}}</td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <td>{{$kriteria[3]->nama_kriteria}}</td>
+                                        <td>:</td>
+                                        @foreach ($penilaian as $pen)
+                                            @if ($pen->alternatif_id == $al->id)
+                                                <td>{{$pen->sub_kriteria4->nama_sub}}</td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <td>{{$kriteria[4]->nama_kriteria}}</td>
+                                        <td>:</td>
+                                        @foreach ($penilaian as $pen)
+                                            @if ($pen->alternatif_id == $al->id)
+                                                <td>{{$pen->sub_kriteria5->nama_sub}}</td>
+                                            @endif
+                                        @endforeach
+                                </tr>
+                                </table>
+                                {{-- <table>
+                                    @foreach ($kriteria as $kr)
+                                        <tr>
+                                            <td>{{ $kr->nama_kriteria }}</td>
+                                            <td>:</td>
+                                                @foreach ($penilaian as $pen)
+                                                    @if ($pen->alternatif_id == $al->id)
+                                                        @if ($pen->sub_kriteria->kriteria_id == $kr->id)
+                                                            <td>{{ $pen->sub_kriteria->nama_sub }}</td>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                        </tr>
+                                    @endforeach
+                                </table> --}}
+                               </td>
+                               <td>
+                                   <a href="/penilaian/{{$al->id}}" class="btn btn-warning btn-sm">
+                                       <i class="fa-solid fa-pencil"></i> Ubah
+                                   </a>
+                               </td>
+                           </tr>
                         @endforeach
                     </tbody>
                 </table>

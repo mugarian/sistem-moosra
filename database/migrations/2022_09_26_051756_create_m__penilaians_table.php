@@ -16,7 +16,11 @@ return new class extends Migration
         Schema::create('m__penilaians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('alternatif_id');
-            $table->foreignId('sub_kriteria_id');
+            $table->foreignId('sub_kriteria1_id');
+            $table->foreignId('sub_kriteria2_id');
+            $table->foreignId('sub_kriteria3_id');
+            $table->foreignId('sub_kriteria4_id');
+            $table->foreignId('sub_kriteria5_id');
             $table->timestamps();
         });
     }

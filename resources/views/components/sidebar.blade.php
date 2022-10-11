@@ -55,5 +55,10 @@
     <div class="sidebar-heading">
         Hasil
     </div>
+    <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
+        <a class="nav-link" href="/laporan">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Laporan</span></a>
+    </li>
 
 </ul>

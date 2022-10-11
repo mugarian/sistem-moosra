@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\M_SubKriteria;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isNan;
+
 class C_Penilaian extends Controller
 {
     public function lihatPenilaian() {
@@ -19,6 +21,14 @@ class C_Penilaian extends Controller
             'kriteria' => M_Kriteria::all(),
             'subkriteria' => M_SubKriteria::all()
         ]);
+    }
+
+    public function jalur($id) {
+        if (M_Penilaian::where('alternatif_id', $id)->get()->count()) {
+            return $this->ubahPenilaian($id);
+        } else {
+            return $this->tambahPenilaian($id);
+        }
     }
 
     public function tambahPenilaian($id) {
@@ -35,15 +45,28 @@ class C_Penilaian extends Controller
 
     public function tambah(Request $request)
     {
-        $kriteria = M_Kriteria::all();
+        // $kriteria = M_Kriteria::all();
 
-        foreach ($kriteria as $kr) {
-            $sub = $request[$kr->id];
-            DB::table('m__penilaians')->insert([
-                'alternatif_id' => $request->alternatif_id,
-                'sub_kriteria_id' => $sub
-            ]);
-        }
+        // foreach ($kriteria as $kr) {
+        //     $sub = $request[$kr->id];
+        //     DB::table('m__penilaians')->insert([
+        //         'alternatif_id' => $request->alternatif_id,
+        //         'sub_kriteria_id' => $sub
+        //     ]);
+        // }
+        // return redirect('/penilaian')->with('success', 'Tambah Data Penilaian Berhasil');
+
+        $validatedData = $request->validate([
+            'alternatif_id' => 'required|max:255',
+            'sub_kriteria1_id' => 'required|max:255',
+            'sub_kriteria2_id' => 'required|max:255',
+            'sub_kriteria3_id' => 'required|max:255',
+            'sub_kriteria4_id' => 'required|max:255',
+            'sub_kriteria5_id' => 'required|max:255',
+        ]);
+
+        M_Penilaian::create($validatedData);
+
         return redirect('/penilaian')->with('success', 'Tambah Data Penilaian Berhasil');
     }
 
@@ -61,17 +84,30 @@ class C_Penilaian extends Controller
 
     public function ubah(Request $request, $id) {
 
-        $kriteria = M_Kriteria::all();
+        // $kriteria = M_Kriteria::all();
+        // foreach ($kriteria as $kr) {
+        //     $sub = $request[$kr->id];
+        //     DB::table('m__penilaians')
+        //         ->where('alternatif_id', $id)
+        //         ->update([
+        //             'alternatif_id' => $request->alternatif_id,
+        //             'sub_kriteria_id' => $sub
+        //         ]);
+        // }
+        // return redirect('/penilaian')->with('success', 'Ubah Data Penilaian Berhasil');
 
-        foreach ($kriteria as $kr) {
-            $sub = $request[$kr->id];
-            DB::table('m__penilaians')
-                ->where('id', $id)
-                ->update([
-                'alternatif_id' => $request->alternatif_id,
-                'sub_kriteria_id' => $sub
-            ]);
-        }
+        $rules = [
+            'alternatif_id' => 'required|max:255',
+            'sub_kriteria1_id' => 'required|max:255',
+            'sub_kriteria2_id' => 'required|max:255',
+            'sub_kriteria3_id' => 'required|max:255',
+            'sub_kriteria4_id' => 'required|max:255',
+            'sub_kriteria5_id' => 'required|max:255',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        M_Penilaian::where('alternatif_id', $id)->first()->update($validatedData);
 
         return redirect('/penilaian')->with('success', 'Ubah Data Penilaian Berhasil');
     }

@@ -24,7 +24,7 @@ class C_Login extends Controller
     public function cekStatusLogin(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
